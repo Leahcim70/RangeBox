@@ -1,77 +1,87 @@
-<div class="range-wrapper">
-    <input class="tgl-range" id="range-slider" type="range" min="0" max="1" step="1" value="0"/>
-  </div>
-  
-  <style>
-    .range-wrapper {
-      width: 4em;
-      height: 2em;
-      position: relative;
-      display: flex;
-      align-items: center;
-      background: #fbfbfb;
-      border-radius: 2em;
-      padding: 2px;
-      transition: all 0.4s ease;
-      border: 1px solid #e8eae9;
-    }
-    .range-wrapper input[type=range] {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      cursor: pointer;
-    }
-    .range-wrapper input[type=range]::-webkit-slider-runnable-track {
-      width: 100%;
-      height: 100%;
-      background: #e8eae9;
-      border-radius: 2em;
-      transition: background 0.3s;
-    }
-    .range-wrapper input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 50%;
-      height: 100%;
-      background: #fbfbfb;
-      border-radius: 2em;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease;
-    }
-    .range-wrapper input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #dcdcdc;
-    }
-    .range-wrapper input[type=range]:active::-webkit-slider-thumb {
-      transform: scale(1.1);
-    }
-    .range-wrapper input[type=range]::-moz-range-track {
-      width: 100%;
-      height: 100%;
-      background: #e8eae9;
-      border-radius: 2em;
-    }
-    .range-wrapper input[type=range]::-moz-range-thumb {
-      width: 50%;
-      height: 100%;
-      background: #fbfbfb;
-      border-radius: 2em;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
-    }
-    .range-wrapper input[type=range]:focus::-moz-range-track {
-      background: #dcdcdc;
-    }
-  </style>
-  
-  <script>
-    document.getElementById('range-slider').addEventListener('click', function() {
-      this.value = this.value == 0 ? 1 : 0;
-      this.dispatchEvent(new Event('input'));
-    });
-  
-    document.getElementById('range-slider').addEventListener('input', function() {
-      this.style.background = this.value == 1 ? '#86d993' : 'transparent';
-    });
-  </script>
-  
+<title>RangeBox</title>
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEtFFmqPF/1YI/Cxo="
+  crossorigin="anonymous"></script>
+
+<div class="range-container">
+  <input type="range" class="range-ios" min="0" max="1" step="1" value="0"/>
+</div>
+
+<style>
+.range-container {
+    padding: 20px;
+}
+
+.range-ios {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3.7em;
+    height: 2.2em;
+    background: #e9e9ea;
+    border-radius: 2em;
+    position: relative;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.range-ios::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2em;
+    height: 2em;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 0.1em;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.range-ios::-moz-range-thumb {
+    width: 2em;
+    height: 2em;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease-in-out;
+}
+
+.range-ios::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2.2em;
+    border-radius: 2em;
+    transition: all 0.3s ease-in-out;
+}
+
+.range-ios::-moz-range-track {
+    width: 100%;
+    height: 2.2em;
+    border-radius: 2em;
+    transition: all 0.3s ease-in-out;
+}
+
+.range-ios[value="1"] {
+    background: #34c759;
+}
+
+.range-ios[value="1"]::-webkit-slider-thumb {
+    transform: translateX(0.5em);
+}
+
+.range-ios[value="1"]::-moz-range-thumb {
+    transform: translateX(0.5em);
+}
+
+</style>
+
+<script>
+const range = document.querySelector('.range-ios');
+range.addEventListener('input', function() {
+    this.setAttribute('value', this.value);
+});
+</script>
