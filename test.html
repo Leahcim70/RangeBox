@@ -83,5 +83,6 @@
 const range = document.querySelector('.range-ios');
 range.addEventListener('input', function() {
     this.setAttribute('value', this.value);
-});
+    console.log('Aktueller Wert:', this.value);
+    });
 </script>
