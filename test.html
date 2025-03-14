@@ -1,14 +1,17 @@
 <title>RangeBox</title>
 <script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
-  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEtFFmqPF/1YI/Cxo="
   crossorigin="anonymous"></script>
 
-<div class="range-container">
-  <input type="range" class="range-ios" min="0" max="1" step="1" value="0"/>
-</div>
-
-<style>
+  <div class="range-container">
+    <input type="range" class="range-ios" min="0" max="1" step="1" value="0" name="wert1" />
+  </div>
+  
+  <div class="range-container">
+    <input type="range" class="range-ios" min="0" max="1" step="1" value="0" name="wert2" />
+  </div>
+  
+  <style>
 .range-container {
     padding: 20px;
 }
@@ -81,8 +84,14 @@
 
 <script>
 const range = document.querySelector('.range-ios');
-range.addEventListener('input', function() {
-    this.setAttribute('value', this.value);
-    console.log('Aktueller Wert:', this.value);
+
+// range.addEventListener('input', function() {
+//     this.setAttribute('value', this.value);
+//     console.log('Aktueller Wert:', this.value, this.getAttribute('name'));
+//     });
+
+    $('.range-ios').on('input', function() {
+        $(this).attr('value', $(this).val());
+        console.log('Aktueller Wert:', $(this).val(), $(this).attr('name'));
     });
 </script>
